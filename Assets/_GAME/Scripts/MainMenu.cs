@@ -10,9 +10,18 @@ public class MainMenu : MonoBehaviour
     [SerializeField]protected GameObject m_PanelMenuOptions;
     [SerializeField]protected GameObject m_PanelMenuExit;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ScreenCapture.CaptureScreenshot("MainMenu");
+        }
+    }
+
     public void Play_Button()
     {
         Debug.Log("Play Pressed");
+        SceneManager.LoadScene(1);
     }
     public void Load_Button()
     {
@@ -22,11 +31,13 @@ public class MainMenu : MonoBehaviour
     public void Options_Button()
     {
         Debug.Log("Options Pressed");
-
+        m_PanelMenuMain.SetActive(false);
+        m_PanelMenuOptions.SetActive(true);
     }
     public void Exit_Button()
     {
         Debug.Log("Exit Pressed");
+        Application.Quit();
 
     }
 }

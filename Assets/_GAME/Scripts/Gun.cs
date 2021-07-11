@@ -19,8 +19,9 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Bullet = Resources.Load<GameObject>("Ball");
-        m_BulletRigid = m_Bullet.GetComponent<Rigidbody>();
+        //Not used for now
+        //m_Bullet = Resources.Load<GameObject>("Ball");
+        //m_BulletRigid = m_Bullet.GetComponent<Rigidbody>();
         FpsCamera = this.gameObject.transform.GetComponentInChildren<Camera>();
     }
 
@@ -32,15 +33,15 @@ public class Gun : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(FpsCamera.transform.position, FpsCamera.transform.forward, out hit, m_WeaponRange))
             {
-                GameObject Bullet = Instantiate(m_Bullet, m_BulletSpawnPosition, this.gameObject.transform.rotation);
-                Rigidbody m_BulletRigid= Bullet.GetComponent<Rigidbody>();
+                //GameObject Bullet = Instantiate(m_Bullet, m_BulletSpawnPosition, this.gameObject.transform.rotation);
+                //Rigidbody m_BulletRigid= Bullet.GetComponent<Rigidbody>();
                 if (hit.distance <= m_WeaponRange)
                 {
                     Enemy m_Enemy = hit.transform.gameObject.GetComponent<Enemy>();
                     if (m_Enemy != null)
                     {
                         //Make it look like a death on enemy
-                        m_Enemy.Do_Death();
+                        m_Enemy.Take_Damage();
                     }
                 }
                 else
@@ -50,7 +51,7 @@ public class Gun : MonoBehaviour
 
             }
             
-
+            
 
 
 
